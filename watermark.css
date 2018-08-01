@@ -1,4 +1,4 @@
-#overlay {
+#domain-watermarker-overlay {
     z-index: 999999; /* This should be sufficiently high-enough to ensure it renders on-top of any properly-implemented website. */
     pointer-events: none;
     position: fixed;
@@ -10,7 +10,7 @@
     opacity: 0.25;
 }
 
-#overlay::before {
+#domain-watermarker-overlay::before {
     content: attr(data-text);
     display: block;
     position: absolute;

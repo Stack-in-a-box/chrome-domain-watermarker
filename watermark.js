@@ -6,7 +6,7 @@ attachStylesToDom();
 
 const overlay = document.createElement("div");
 
-overlay.setAttribute("id", "overlay"); // TODO: Change this to something more-specific, so it's less likely to class with an app also using this ID for another purpose.
+overlay.setAttribute("id", "domain-watermarker-overlay");
 overlay.dataset.text = (textToRepeat + spacingCharacters).repeat(timesToRepeatText);
 
 document.body.appendChild(overlay);
