@@ -3,14 +3,16 @@
     const spacingCharacters = "       ";
     const timesToRepeatText = 100;
 
-    attachStylesToDom();
+    (function main() {
+        attachStylesToDom();
 
-    const overlay = document.createElement("div");
+        const overlay = document.createElement("div");
 
-    overlay.setAttribute("id", "domain-watermarker-overlay");
-    overlay.dataset.text = (textToRepeat + spacingCharacters).repeat(timesToRepeatText);
+        overlay.setAttribute("id", "domain-watermarker-overlay");
+        overlay.dataset.text = (textToRepeat + spacingCharacters).repeat(timesToRepeatText);
 
-    document.body.appendChild(overlay);
+        document.body.appendChild(overlay);
+    })();
 
     function attachStylesToDom() {
         const head = document.getElementsByTagName("head")[0];
