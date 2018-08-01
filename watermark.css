@@ -10,7 +10,9 @@
     opacity: 0.25;
 }
 
-#overlay p {
+#overlay::before {
+    content: attr(data-text);
+    display: block;
     position: absolute;
     top: -75%;
     left: -75%;
