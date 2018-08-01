@@ -1,8 +1,8 @@
 attachStylesToDom();
 
 const overlay = document.createElement("div");
-const textToRepeat = "WARNING: Live system!!"
-const spacingCharacters = " _____ ";
+const textToRepeat = "WARNING: Live system!"
+const spacingCharacters = "       ";
 const timesToRepeatText = 100;
 const repeatedText = (textToRepeat + spacingCharacters).repeat(timesToRepeatText);
 

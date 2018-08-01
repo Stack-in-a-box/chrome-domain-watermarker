@@ -14,6 +14,7 @@
     content: attr(data-text);
     display: block;
     position: absolute;
+    white-space: pre-wrap;
     top: -75%;
     left: -75%;
     width: 200%;
