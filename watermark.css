@@ -16,8 +16,8 @@
     position: absolute;
     top: -75%;
     left: -75%;
-    width: 150%;
-    height: 150%;
+    width: 200%;
+    height: 200%;
     transform: rotate(-33.3deg);
     color: red;
     font-weight: 900;
