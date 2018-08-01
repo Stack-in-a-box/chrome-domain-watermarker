@@ -5,7 +5,10 @@
     "manifest_version": 2,
     "web_accessible_resources": ["watermark.css"],
     "content_scripts": [{
-        "matches": ["https://www.google.com/*"],
+        "matches": [
+            "http://*/*",
+            "https://*/*"
+        ],
         "js": ["watermark.js"],
         "css": ["watermark.css"]
     }]
