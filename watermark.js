@@ -1,9 +1,16 @@
 (() => {
+    const domainsToWatermark = [
+        "www.google.com",
+        "www.google.co.uk"
+    ];
+
     const textToRepeat = "WARNING: Live system!"
     const spacingCharacters = "       ";
     const timesToRepeatText = 100;
 
     (function main() {
+        if (!domainsToWatermark.includes(window.location.hostname)) return;
+
         attachStylesToDom();
 
         const overlay = document.createElement("div");

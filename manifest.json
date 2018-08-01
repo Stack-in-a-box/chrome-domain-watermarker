@@ -3,6 +3,7 @@
     "version": "0.0.0",
     "description": "An extension that overlays configurable watermarks on top of websites, primarily to remind developers/testers when they’re interacting with a live system as opposed to a test one.",
     "manifest_version": 2,
+    "permissions": ["tabs"],
     "web_accessible_resources": ["watermark.css"],
     "content_scripts": [{
         "matches": [
