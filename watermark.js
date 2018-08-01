@@ -17,7 +17,7 @@ const css = `
         left: -75%;
         width: 150%;
         height: 150%;
-        transform: rotate(-45deg);
+        transform: rotate(-33.3deg);
         color: red;
         font-weight: 900;
         font-size: 50pt;
