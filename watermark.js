@@ -1,24 +1,26 @@
-const textToRepeat = "WARNING: Live system!"
-const spacingCharacters = "       ";
-const timesToRepeatText = 100;
+(() => {
+    const textToRepeat = "WARNING: Live system!"
+    const spacingCharacters = "       ";
+    const timesToRepeatText = 100;
 
-attachStylesToDom();
+    attachStylesToDom();
 
-const overlay = document.createElement("div");
+    const overlay = document.createElement("div");
 
-overlay.setAttribute("id", "domain-watermarker-overlay");
-overlay.dataset.text = (textToRepeat + spacingCharacters).repeat(timesToRepeatText);
+    overlay.setAttribute("id", "domain-watermarker-overlay");
+    overlay.dataset.text = (textToRepeat + spacingCharacters).repeat(timesToRepeatText);
 
-document.body.appendChild(overlay);
+    document.body.appendChild(overlay);
 
-function attachStylesToDom() {
-    const head = document.getElementsByTagName("head")[0];
-    const link = document.createElement("link");
-    const url = chrome.runtime.getURL("watermark.css");
+    function attachStylesToDom() {
+        const head = document.getElementsByTagName("head")[0];
+        const link = document.createElement("link");
+        const url = chrome.runtime.getURL("watermark.css");
 
-    link.setAttribute("rel", "stylesheet");
-    link.setAttribute("type", "text/css");
-    link.setAttribute("href", url);
+        link.setAttribute("rel", "stylesheet");
+        link.setAttribute("type", "text/css");
+        link.setAttribute("href", url);
 
-    head.appendChild(link);
-}
+        head.appendChild(link);
+    }
+})();
