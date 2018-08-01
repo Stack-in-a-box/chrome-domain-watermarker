@@ -1,5 +1,6 @@
 #domain-watermarker-overlay {
     z-index: 999999; /* This should be sufficiently high-enough to ensure it renders on-top of any properly-implemented website. */
+    font-family: "Helvetica", sans-serif;
     pointer-events: none;
     position: fixed;
     top: 0;
