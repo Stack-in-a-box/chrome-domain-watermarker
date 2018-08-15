@@ -6,3 +6,13 @@ form {
 form input + button {
     margin-left: 5px;
 }
+
+ul {
+    margin: 8px 0 0;
+    padding-left: 20px;
+}
+
+ul li a.remove-link {
+    text-decoration: none;
+    color: red;
+}
