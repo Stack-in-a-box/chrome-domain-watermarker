@@ -1,1 +1,1 @@
-# chrome-live-watermark
+# chrome-domain-watermarker
