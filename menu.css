@@ -1,0 +1,8 @@
+form {
+    display: flex;
+    margin: 0 2px 0 1px;
+}
+
+form input + button {
+    margin-left: 5px;
+}
