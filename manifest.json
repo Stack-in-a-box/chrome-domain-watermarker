@@ -14,7 +14,10 @@
             "http://*/*",
             "https://*/*"
         ],
-        "js": ["watermark.js"],
+        "js": [
+            "domains.js",
+            "watermark.js"
+        ],
         "css": ["watermark.css"]
     }]
 }

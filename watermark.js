@@ -1,9 +1,4 @@
 (() => {
-    const domainsToWatermark = [
-        "www.google.com",
-        "www.google.co.uk"
-    ];
-
     const textToRepeat = "WARNING: Live system!"
     const spacingCharacters = "       ";
     const timesToRepeatText = 100;
