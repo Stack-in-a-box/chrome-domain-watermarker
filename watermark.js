@@ -1,10 +1,10 @@
-(() => {
+chrome.storage.local.get({ domains: [] }, ({ domains }) => {
     const textToRepeat = "WARNING: Live system!"
     const spacingCharacters = "       ";
     const timesToRepeatText = 100;
 
     (function main() {
-        if (!domainsToWatermark.includes(window.location.hostname)) return;
+        if (!domains.includes(window.location.hostname)) return;
 
         attachStylesToDom();
 
@@ -27,4 +27,4 @@
 
         head.appendChild(link);
     }
-})();
+});
