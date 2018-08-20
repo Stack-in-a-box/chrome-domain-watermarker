@@ -15,12 +15,24 @@ chrome.storage.local.get({ domains: [] }, storage => {
         `).join("");
     }
 
-    // TODO: Sanitise input.
     function onFormSubmit() {
-        const domainToAdd = document.getElementById("domain-to-add-field").value;
+        const inputValue = document.getElementById("domain-to-add-field").value;
+        const domainToAdd = sanitiseInput(inputValue);
+
         if (!domainToAdd) return;
+        
         domains.push(domainToAdd);
         chrome.storage.local.set({ domains });
+
         renderDomainList();
+    }
+
+    function sanitiseInput(input) {
+        const container = document.createElement("div");
+        const textNode = document.createTextNode(input);
+
+        container.appendChild(textNode);
+
+        return container.innerHTML;
     }
 });
