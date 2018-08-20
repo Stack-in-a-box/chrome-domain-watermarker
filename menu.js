@@ -7,12 +7,22 @@ chrome.storage.local.get({ domains: [] }, storage => {
     })();
 
     function renderDomainList() {
-        document.getElementById("domain-list").innerHTML = domains.map(domain => `
-            <li>
+        document.getElementById("domain-list").innerHTML = domains.map((domain, index) => `
+            <li id="domain-list-item-index-${index}">
                 <span>${domain}</span>
-                <a href="#" class="remove-link">🗙</a>
+                <a id="domain-list-item-index-${index}-remove-link" href="#" class="remove-link">🗙</a>
             </li>
         `).join("");
+
+        domains.forEach((_, index) => {
+            document.getElementById(`domain-list-item-index-${index}-remove-link`)
+                .addEventListener("click", () => {
+                    removeElementFromDom(`domain-list-item-index-${index}`);
+                    domains.splice(index, 1);
+                    chrome.storage.local.set({ domains });
+                    renderDomainList();
+                });
+        });
     }
 
     function onFormSubmit() {
@@ -20,7 +30,7 @@ chrome.storage.local.get({ domains: [] }, storage => {
         const domainToAdd = sanitiseInput(inputValue);
 
         if (!domainToAdd) return;
-        
+
         domains.push(domainToAdd);
         chrome.storage.local.set({ domains });
 
@@ -34,5 +44,10 @@ chrome.storage.local.get({ domains: [] }, storage => {
         container.appendChild(textNode);
 
         return container.innerHTML;
+    }
+
+    function removeElementFromDom(id) {
+        const element = document.getElementById(id);
+        element.parentNode.removeChild(element);
     }
 });
