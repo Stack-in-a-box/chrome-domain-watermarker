@@ -1,5 +1,5 @@
-chrome.storage.local.get({ domains: [] }, ({ domains }) => {
-    const textToRepeat = "WARNING: Live system!"
+chrome.storage.local.get({ domains: [], text: "WARNING: Live system!" }, ({ domains, text }) => {
+    const textToRepeat = text;
     const spacingCharacters = "       ";
     const timesToRepeatText = 100;
 
