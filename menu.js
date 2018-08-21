@@ -2,26 +2,36 @@ chrome.storage.local.get({ domains: [] }, storage => {
     let domains = storage.domains;
 
     (function main() {
-        document.getElementById("add-domain-form").addEventListener("submit", onFormSubmit);
+        document
+            .getElementById("add-domain-form")
+            .addEventListener("submit", onFormSubmit);
+
         renderDomainList();
     })();
 
     function renderDomainList() {
-        document.getElementById("domain-list").innerHTML = domains.map((domain, index) => `
+        document.getElementById("domain-list").innerHTML = getDomainListHtml();
+        attachRemoveItemLinkClickListeners();
+    }
+
+    function renderDomainListItem(domain, index) {
+        return `
             <li id="domain-list-item-index-${index}">
                 <span>${domain}</span>
                 <a id="domain-list-item-index-${index}-remove-link" href="#" class="remove-link">🗙</a>
             </li>
-        `).join("");
+        `;
+    }
 
+    function getDomainListHtml() {
+        return domains.map(renderDomainListItem).join("");
+    }
+
+    function attachRemoveItemLinkClickListeners() {
         domains.forEach((_, index) => {
-            document.getElementById(`domain-list-item-index-${index}-remove-link`)
-                .addEventListener("click", () => {
-                    removeElementFromDom(`domain-list-item-index-${index}`);
-                    domains.splice(index, 1);
-                    chrome.storage.local.set({ domains });
-                    renderDomainList();
-                });
+            document
+                .getElementById(`domain-list-item-index-${index}-remove-link`)
+                .addEventListener("click", () => onRemoveItemLinkClick(index));
         });
     }
 
@@ -31,9 +41,14 @@ chrome.storage.local.get({ domains: [] }, storage => {
 
         if (!domainToAdd) return;
 
-        domains.push(domainToAdd);
-        chrome.storage.local.set({ domains });
+        addDomainToList(domainToAdd);
+        saveDomainListToStorage();
+        renderDomainList();
+    }
 
+    function onRemoveItemLinkClick(index) {
+        removeDomainFromList(index);
+        saveDomainListToStorage();
         renderDomainList();
     }
 
@@ -46,8 +61,15 @@ chrome.storage.local.get({ domains: [] }, storage => {
         return container.innerHTML;
     }
 
-    function removeElementFromDom(id) {
-        const element = document.getElementById(id);
-        element.parentNode.removeChild(element);
+    function addDomainToList(domain) {
+        domains.push(domain);
+    }
+
+    function removeDomainFromList(index) {
+        domains.splice(index, 1);
+    }
+
+    function saveDomainListToStorage() {
+        chrome.storage.local.set({ domains });
     }
 });
