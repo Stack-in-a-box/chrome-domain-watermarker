@@ -1,4 +1,4 @@
-chrome.storage.local.get({ domains: [], text: "WARNING: Live system!" }, ({ domains, text }) => {
+chrome.storage.local.get({ domains: defaultDomainList, text: defaultWatermarkText }, ({ domains, text }) => {
     const textToRepeat = text;
     const spacingCharacters = "       ";
     const timesToRepeatText = 100;

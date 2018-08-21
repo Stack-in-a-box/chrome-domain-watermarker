@@ -1,4 +1,4 @@
-chrome.storage.local.get({ domains: [] }, storage => {
+chrome.storage.local.get({ domains: defaultDomainList, text: defaultWatermarkText }, storage => {
     let domains = storage.domains;
 
     (function main() {
@@ -6,8 +6,13 @@ chrome.storage.local.get({ domains: [] }, storage => {
             .getElementById("add-domain-form")
             .addEventListener("submit", onFormSubmit);
 
+        renderWatermarkTextField();
         renderDomainList();
     })();
+
+    function renderWatermarkTextField() {
+        document.getElementById("watermark-text-field-input").value = storage.text;
+    }
 
     function renderDomainList() {
         document.getElementById("domain-list").innerHTML = getDomainListHtml();
