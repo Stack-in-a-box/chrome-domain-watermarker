@@ -11,7 +11,10 @@ chrome.storage.local.get({ domains: defaultDomainList, text: defaultWatermarkTex
     })();
 
     function renderWatermarkTextField() {
-        document.getElementById("watermark-text-field-input").value = storage.text;
+        const element = document.getElementById("watermark-text-field-input");
+        
+        element.value = storage.text;
+        element.addEventListener("input", () => saveWatermarkTextToStorage());
     }
 
     function renderDomainList() {
@@ -72,6 +75,11 @@ chrome.storage.local.get({ domains: defaultDomainList, text: defaultWatermarkTex
 
     function removeDomainFromList(index) {
         domains.splice(index, 1);
+    }
+
+    function saveWatermarkTextToStorage() {
+        const input = document.getElementById("watermark-text-field-input");
+        chrome.storage.local.set({ text: input.value });
     }
 
     function saveDomainListToStorage() {
