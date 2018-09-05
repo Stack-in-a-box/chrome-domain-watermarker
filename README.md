@@ -34,7 +34,6 @@ I don’t have a formal roadmap for future development yet, but these are some o
 * Properly-designed UI and branding.
 * Free version (v1) and premium/pro version w/ more features (v2).
 * Roaming settings.
-* Microsoft Edge port (uses same extension system).
 
 ## Credits
 
