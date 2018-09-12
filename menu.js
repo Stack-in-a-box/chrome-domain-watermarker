@@ -43,7 +43,9 @@ chrome.storage.local.get({ domains: defaultDomainList, text: defaultWatermarkTex
         });
     }
 
-    function onFormSubmit() {
+    function onFormSubmit(event) {
+        event.preventDefault();
+
         const inputValue = document.getElementById("domain-to-add-field").value;
         const domainToAdd = sanitiseInput(inputValue);
 
