@@ -6,6 +6,10 @@ chrome.storage.local.get({ domains: defaultDomainList, text: defaultWatermarkTex
             .getElementById("add-domain-form")
             .addEventListener("submit", onFormSubmit);
 
+        document
+            .getElementById("domain-to-add-field")
+            .focus();
+
         renderWatermarkTextField();
         renderDomainList();
     })();
