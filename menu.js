@@ -3,7 +3,7 @@ chrome.storage.local.get({ domains: defaultDomainList, text: defaultWatermarkTex
 
     (function main() {
         populateFormInputWithCurrentDomain();
-        focusDomainToAddField();
+        selectAllTextInDomainInput();
         registerFormSubmissionHandler();
         renderWatermarkTextField();
         renderDomainList();
@@ -19,10 +19,12 @@ chrome.storage.local.get({ domains: defaultDomainList, text: defaultWatermarkTex
         });
     }
 
-    function focusDomainToAddField() {
-        document
-            .getElementById("domain-to-add-field")
-            .focus();
+    function selectAllTextInDomainInput() {
+        setTimeout(() => {
+            document
+                .getElementById("domain-to-add-field")
+                .select();
+        }, 10); // Adding a small delay avoids a race condition on Chrome: https://stackoverflow.com/a/19498477
     }
 
     function registerFormSubmissionHandler() {
