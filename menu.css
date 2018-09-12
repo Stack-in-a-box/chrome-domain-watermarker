@@ -35,6 +35,11 @@ ul {
     padding-left: 20px;
 }
 
+ul li a.edit-link {
+    text-decoration: none;
+    color: blue;
+}
+
 ul li a.remove-link {
     text-decoration: none;
     color: red;

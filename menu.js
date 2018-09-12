@@ -49,13 +49,20 @@ chrome.storage.local.get({ domains: defaultDomainList, text: defaultWatermarkTex
         return `
             <li id="domain-list-item-index-${index}">
                 <span>${domain}</span>
+                <a id="domain-list-item-index-${index}-edit-link" href="#" class="edit-link">✎</a>
                 <a id="domain-list-item-index-${index}-remove-link" href="#" class="remove-link">🗙</a>
             </li>
         `;
     }
 
     function getDomainListHtml() {
-        return domains.map(renderDomainListItem).join("");
+        return domains.map(renderDomainListItem).join("") + `
+            <li>
+                <input type=text placeholder="Domain…" value="www.example.com">
+                <input type=text placeholder="Custom watermark text…">
+                <button>Save</button>
+            </li>
+        `;
     }
 
     function attachRemoveItemLinkClickListeners() {
