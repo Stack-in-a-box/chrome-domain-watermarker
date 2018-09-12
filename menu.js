@@ -76,6 +76,7 @@ chrome.storage.local.get({ domains: defaultDomainList, text: defaultWatermarkTex
     }
 
     function addDomainToList(domain) {
+        if (domains.includes(domain)) return;
         domains.push(domain);
     }
 
