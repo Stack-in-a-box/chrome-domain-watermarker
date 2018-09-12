@@ -10,6 +10,14 @@ chrome.storage.local.get({ domains: defaultDomainList, text: defaultWatermarkTex
             .getElementById("domain-to-add-field")
             .focus();
 
+        chrome.tabs.query({ active: true, currentWindow: true }, ([{ url }]) => {
+            const anchor = document.createElement("a");
+            const input = document.getElementById("domain-to-add-field");
+
+            anchor.href = url;
+            input.value = anchor.hostname;
+        });
+
         renderWatermarkTextField();
         renderDomainList();
     })();
