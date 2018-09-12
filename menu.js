@@ -16,7 +16,7 @@ chrome.storage.local.get({ domains: defaultDomainList, text: defaultWatermarkTex
 
     function renderWatermarkTextField() {
         const element = document.getElementById("watermark-text-field-input");
-        
+
         element.value = storage.text;
         element.addEventListener("input", () => saveWatermarkTextToStorage());
     }
