@@ -2,17 +2,36 @@ chrome.storage.local.get({ domains: defaultDomainList, text: defaultWatermarkTex
     let domains = storage.domains;
 
     (function main() {
-        document
-            .getElementById("add-domain-form")
-            .addEventListener("submit", onFormSubmit);
-
-        document
-            .getElementById("domain-to-add-field")
-            .focus();
-
+        populateFormInputWithCurrentDomain();
+        selectAllTextInDomainInput();
+        registerFormSubmissionHandler();
         renderWatermarkTextField();
         renderDomainList();
     })();
+
+    function populateFormInputWithCurrentDomain() {
+        chrome.tabs.query({ active: true, currentWindow: true }, ([{ url }]) => {
+            const anchor = document.createElement("a");
+            const input = document.getElementById("domain-to-add-field");
+
+            anchor.href = url;
+            input.value = anchor.hostname;
+        });
+    }
+
+    function selectAllTextInDomainInput() {
+        setTimeout(() => {
+            document
+                .getElementById("domain-to-add-field")
+                .select();
+        }, 10); // Adding a small delay avoids a race condition on Chrome: https://stackoverflow.com/a/19498477
+    }
+
+    function registerFormSubmissionHandler() {
+        document
+            .getElementById("add-domain-form")
+            .addEventListener("submit", onFormSubmit);
+    }
 
     function renderWatermarkTextField() {
         const element = document.getElementById("watermark-text-field-input");
