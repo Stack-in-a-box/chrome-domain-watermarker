@@ -2,14 +2,14 @@ chrome.storage.local.get({ domains: defaultDomainList, text: defaultWatermarkTex
     let domains = storage.domains;
 
     (function main() {
-        document
-            .getElementById("add-domain-form")
-            .addEventListener("submit", onFormSubmit);
+        populateFormInputWithCurrentDomain();
+        focusDomainToAddField();
+        registerFormSubmissionHandler();
+        renderWatermarkTextField();
+        renderDomainList();
+    })();
 
-        document
-            .getElementById("domain-to-add-field")
-            .focus();
-
+    function populateFormInputWithCurrentDomain() {
         chrome.tabs.query({ active: true, currentWindow: true }, ([{ url }]) => {
             const anchor = document.createElement("a");
             const input = document.getElementById("domain-to-add-field");
@@ -17,10 +17,19 @@ chrome.storage.local.get({ domains: defaultDomainList, text: defaultWatermarkTex
             anchor.href = url;
             input.value = anchor.hostname;
         });
+    }
 
-        renderWatermarkTextField();
-        renderDomainList();
-    })();
+    function focusDomainToAddField() {
+        document
+            .getElementById("domain-to-add-field")
+            .focus();
+    }
+
+    function registerFormSubmissionHandler() {
+        document
+            .getElementById("add-domain-form")
+            .addEventListener("submit", onFormSubmit);
+    }
 
     function renderWatermarkTextField() {
         const element = document.getElementById("watermark-text-field-input");
