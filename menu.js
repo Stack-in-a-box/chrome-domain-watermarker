@@ -49,7 +49,7 @@ chrome.storage.local.get({ domains: defaultDomainList, text: defaultWatermarkTex
         return `
             <li id="domain-list-item-index-${index}">
                 <span>${domain}</span>
-                <a id="domain-list-item-index-${index}-remove-link" href="#" class="remove-link">🗙</a>
+                <a id="domain-list-item-index-${index}-remove-link" href="#" class="remove-link" title="Remove">🗙</a>
             </li>
         `;
     }
