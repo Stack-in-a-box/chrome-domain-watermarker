@@ -95,8 +95,9 @@ chrome.storage.local.get({ domains: defaultDomainList, text: defaultWatermarkTex
     }
 
     function addDomainToList(domain) {
-        if (domains.includes(domain)) return;
-        domains.push(domain);
+        const lowercaseDomain = domain.toLowerCase();
+        if (domains.includes(lowercaseDomain)) return;
+        domains.push(lowercaseDomain);
     }
 
     function removeDomainFromList(index) {
