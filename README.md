@@ -38,12 +38,12 @@ I don’t have a formal roadmap for future development yet, but these are some o
 
 ## Credits
 
-**Author:** Andi Emma Davies ([@andidavies92](https://www.github.com/andidavies92))
+**Author:** Andi Emma Davies ([@andiemmadavies](https://www.github.com/andiemmadavies))
 
 _Poke me via an issue if you’re interested in contributing._
 
 ## Licence
 
-**Copyright © Stack-in-a-box Software 2018**
+**Copyright © Stack-in-a-box Software 2018–2021**
 
 All rights reserved _(I’ll sort a proper licence before official release…)_
